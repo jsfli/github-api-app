@@ -1,13 +1,17 @@
-// var apiKey = require('./../.env').apiKey;
+var apiKey = require('./../.env').apiKey;
 
-function backEndConstructor(){
+function backEndConstructor(){}
 
-}
+backEndConstructor.prototype.getRepos = function (username, displayCallBack){
 
+    $.get('https://api.github.com/users/'+username+'/repos'+'?access_token='+
+    apiKey).then(function(response){
 
-backEndConstructor.prototype.displayUserName = function (){
-    console.log("hello");
-};
+    displayCallBack(username, response);
 
+    }).fail(function(error){
+      console.log(error.responseJSON.message);
+    });
+  };
 
 exports.backEndFunctionsModule = backEndConstructor;
