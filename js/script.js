@@ -1,9 +1,13 @@
-function backEndMagic(){
+// var apiKey = require('./../.env').apiKey;
+
+function backEndConstructor(){
 
 }
 
-backEndMagic.prototype.getRepos = function(){
-  console.log("getRepos test");
+
+backEndConstructor.prototype.displayUserName = function (){
+    console.log("hello");
 };
 
-exports.backEndFunctionsModule = backEndMagic;
+
+exports.backEndFunctionsModule = backEndConstructor;

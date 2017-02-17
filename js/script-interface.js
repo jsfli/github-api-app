@@ -1,10 +1,6 @@
 var username;
 var apiKey = require('./../.env').apiKey;
-var backEndMagic = require('./../js/script.js').backEndFunctionsModule;
-
-var newBackEndMagic = new backEndMagic();
-
-
+var backEndConstructor = require('./../js/script.js').backEndFunctionsModule;
 
 var collectUserName = function(){
       username = $("#usernameInput").val();
@@ -18,14 +14,18 @@ $(document).ready(function(){
 
       collectUserName();
 
+      var newBackEndMagic = new backEndConstructor();
+      newBackEndMagic.displayUserName();
+
       //collect API this is back end
-      $.get('https://api.github.com/users/'+username+'?access_token=' + apiKey).then(function(response){
-      console.log(JSON.stringify(response));
+      $.get('https://api.github.com/users/'+username+'/repos'+'?access_token='
+      + apiKey).then(function(response){
+      console.log(response);
       }).fail(function(error){
       console.log(error.responseJSON.message);
       });
 
-      console.log("problem");
+      console.log("line after API");
 
 
 
