@@ -12,20 +12,22 @@
     <div class="container-fluid">
       <h1>Independent Poject Week 1<h1>
 
-      <p>Insert your Github username into a form to see names and description
-        yourself </p>
+      <!-- <p>Insert your Github username into a form to see names and description
+        of your repos
+      </p> -->
 
       <form id="inputForm">
-        <label for="username">Please insert your github username: </label></br></br>
+        <label for="username">Please insert your github username: </label><br><br>
         <input id="usernameInput" type="string"></input><br><br>
-        <button id="usernameSubmit" type="submit">Submit</button>
+        <button id="usernameSubmit" type="submit">Submit</button><br>
 
       </form>
 
-      <div id="showUsernameInput"></div><br><br>
-
-      <div id="apiResponse"></div>
-      <div id="apiResponse2"></div>
+      <div class="display">
+      <ul id="usernameDisplay"></ul>
+      <ul id="infoDisplay"></ul>
+      <ul id="reposInfo"></ul>
+    </div>
 
 
 

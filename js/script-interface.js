@@ -1,18 +1,24 @@
 var username;
-var apiKey = require('./../.env').apiKey;
+// var apiKey = require('./../.env').apiKey;
 var backEndConstructor = require('./../js/script.js').backEndFunctionsModule;
 var data;
+var info;
 
 var collectUserName = function(){
       username = $("#usernameInput").val();
       $("#usernameInput").val("");
-      $("#showUsernameInput").text("Your Github username is "+username);
+      $("#usernameDisplay").text("Your Github username is "+username);
     };
 
 var displayCallBack = function(username, response) {
-  console.log(response);
-  console.log(response[0].name);
-  console.log(response.length);
+  info = response;
+  console.log(info.length);
+  $('#infoDisplay').append("<li>"+username+" currently has "+info.length+" repos.</li>"+
+                           "<li> The name of the first repo is "+info[0].name+" .</li>"+
+                           "<li> The description of my first repo is  "+info[0].description+" .</li>"+
+                           "<li> My outstanding tasks are putting API array info back into an array for .name and .description and display it on the page, but ran out of time.</li>"
+                            );
+  console.log(info[0].name);
 };
 
 $(document).ready(function(){
@@ -23,10 +29,5 @@ $(document).ready(function(){
 
   var newBackEndMagic = new backEndConstructor();
   newBackEndMagic.getRepos(username, displayCallBack);
-
-  console.log("last line");
-
-
-
-    });
+  });
 });
